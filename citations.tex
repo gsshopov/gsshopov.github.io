@@ -1,0 +1,148 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks,allcolors={blue!50!black}]{hyperref}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+\usepackage{enumitem}
+\newlength\mylabelsep
+\setlength\mylabelsep{\labelsep}
+\newlist{pubenumerate}{enumerate}{1}
+\setlist[pubenumerate]{label=[\arabic*],leftmargin=24.2pt,labelsep=*}
+\newlist{citenumerate}{enumerate}{1}
+\setlist[citenumerate]{label=\arabic*.,labelsep=\mylabelsep}
+
+\usepackage[language=english,autolang=other,maxnames=100,url=false]{biblatex}
+\addbibresource{publications.bib}
+\addbibresource{citations.bib}
+
+% Make the title of article, inproceedings and misc entries a link
+\newbibmacro{string+urldoi}[1]{%
+ 	\iffieldundef{url}{%
+		\iffieldundef{doi}{%
+			#1%
+		}{%
+			\href{http://dx.doi.org/\thefield{doi}}{#1}%
+		}%
+ 	}{%
+		\href{\thefield{url}}{#1}%
+	}%
+}
+\DeclareFieldFormat[article,inproceedings,misc,thesis]{title}%
+	{\usebibmacro{string+urldoi}{\mkbibquote{#1}}}
+
+% Print the publisher field of article entries
+\renewbibmacro*{journal+issuetitle}{%
+	\usebibmacro{journal}%
+	\setunit*{\addspace}%
+	\iffieldundef{series}
+		{}
+		{\newunit
+		 \printfield{series}%
+		 \setunit{\addspace}}%
+	\usebibmacro{volume+number+eid}%
+	\setunit{\addspace}%
+	\usebibmacro{issue}%
+	\setunit{\addperiod\space}%
+	\usebibmacro{publisher+location+date}%
+	\newunit}
+	
+% Add period at the end of a \fullcite
+\DeclareCiteCommand{\fullcite}
+	{\usebibmacro{prenote}}
+	{\usedriver
+		{\DeclareNameAlias{sortname}{default}}
+		{\thefield{entrytype}}}
+	{\multicitedelim}
+	{\usebibmacro{postnote}%
+	 \finentry}
+
+\usepackage{xpatch}
+% Print both the issn and isbn fields
+\makeatletter
+\@for\next:=book,inbook,collection,incollection,proceedings,inproceedings\do{%
+	\xpatchbibdriver{\next}
+		{{\printfield{isbn}}}
+		{{\printfield{issn}\newunit\newblock\printfield{isbn}}}
+		{}{}%
+}
+\makeatother
+
+\title{\textbf{Списък на цитиранията}}
+\date{}
+\author{
+	Георги Шопов \\
+	\textit{ИИКТ -- Българска академия на науките} \\
+	\textit{секция ,,Изкуствен интелект и езикови технологии``}
+}
+
+\begin{document}
+	\maketitle
+	\begin{pubenumerate}
+		\addtocounter{pubenumeratei}{1}
+%		\item \fullcite{shopov-gerdjikov-2024-consistent}
+%			\par
+%			\emph{Цитирания:}
+%			\begin{citenumerate}
+%			\end{citenumerate}
+
+		\addtocounter{pubenumeratei}{1}
+%		\item \fullcite{geneva-etal-2023-algorithms}
+%			\par
+%			\emph{Цитирания:}
+%			\begin{citenumerate}
+%			\end{citenumerate}
+
+		\addtocounter{pubenumeratei}{1}
+%		\item \fullcite{geneva-etal-2023-accentor}
+%			\par
+%			\emph{Цитирания:}
+%			\begin{citenumerate}
+%			\end{citenumerate}
+			
+		\item \fullcite{shopov-etal-2023-streamspeech}
+			\par
+			\emph{Цитирания:}
+			\begin{citenumerate}
+				\item \fullcite{reus-etal-2024-tungnaa}
+			\end{citenumerate}
+			
+		\addtocounter{pubenumeratei}{1}
+%		\item \fullcite{geneva-etal-2021-algorithms}
+%			\par
+%			\emph{Цитирания:}
+%			\begin{citenumerate}
+%			\end{citenumerate}
+
+		\addtocounter{pubenumeratei}{1}
+%		\item \fullcite{geneva-etal-2020-composition}
+%			\par
+%			\emph{Цитирания:}
+%			\begin{citenumerate}
+%			\end{citenumerate}
+			
+		\item \fullcite{geneva-etal-2019-building}
+			\par
+			\emph{Цитирания:}
+			\begin{citenumerate}
+				\item \fullcite{margova-bruinsma-2024-look}
+				\item \fullcite{varona-etal-2024-bilingual}
+				\item \fullcite{virkkunen-etal-2023-finnish}
+				\item \fullcite{rouvalis-2023-grec}
+				\item \fullcite{dimitrova-2021-bulgarian}
+				\item \fullcite{kirkedal-etal-2020-ft}
+				\item \fullcite{kratochvil-etal-2020-large}
+			\end{citenumerate}
+			
+		\addtocounter{pubenumeratei}{1}
+%		\item \fullcite{geneva-shopov-2019-towards}
+%			\par
+%			\emph{Цитирания:}
+%			\begin{citenumerate}
+%			\end{citenumerate}
+	\end{pubenumerate}
+\end{document}

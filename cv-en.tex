@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper,sans,colorlinks]{moderncv}
+\moderncvcolor{blue}
+\moderncvstyle{classic}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+
+\usepackage{enumitem}
+\newlist{cvenumerate}{enumerate}{1}
+\setlist[cvenumerate]{label=[\arabic*],leftmargin=\hintscolumnwidth+\separatorcolumnwidth,labelsep=\separatorcolumnwidth}
+
+\AtBeginDocument{\hypersetup{allcolors={color1}}}
+
+\name{Georgi}{Shopov}
+\title{Curriculum Vitae}
+\address{Acad. Georgi Bonchev St., Block 2}{1113 Sofia, Bulgaria}{}
+\email{gshopov@lml.bas.bg}
+
+\begin{document}
+\fancyfoot[r]{\color{color2}\pagenumberfont\strut\thepage/\pageref*{lastpage}}
+
+\makecvtitle
+\vspace*{-1cm}
+
+\section{Research Interests}
+\cvlistitem{Formal Languages and Automata Theory}
+\cvlistitem{Data Structures and Algorithms}
+\cvlistitem{Machine Learning}
+
+\section{Education}
+\cventry{\rlap{2020--}\hphantom{2017--2019}}{Ph.D. in Computer Science}{IICT, Bulgarian Academy of Sciences}{}{}{Thesis: \href{https://lml.bas.bg/~gshopov/phd-thesis.pdf}{Finite Transducers for Representation of Language Models} \newline Supervisor: Prof. D.Sc. Stoyan Mihov}
+\cventry{2017--2019}{M.Sc. in Computational Linguistics}{FMI, Sofia University}{}{}{Thesis: \href{https://lml.bas.bg/~gshopov/msc-thesis.pdf}{Construction of Character-Level \(f\)-Transducers for Representation of Language Models} \newline Supervisor: Prof. D.Sc. Stoyan Mihov}
+\cventry{2012--2017}{B.Sc. in Computer Science}{FMI, Sofia University}{}{}{}
+
+\section{Professional Experience}
+\cventry{\rlap{2020--}\hphantom{2018--2019}}{Assistant Professor}{IICT, Bulgarian Academy of Sciences}{}{}{}
+\cventry{2018--2019}{Programmer}{IICT, Bulgarian Academy of Sciences}{}{}{}
+
+\section{Teaching Experience}
+\cventry{}{Teaching Assistant}{FMI, Sofia University}{}{}{}
+\cvitem{2020--2021}{Applications of Finite Automata}
+\cvitem{2017--2019}{Languages, Automata and Computability}
+\cvitem{2014}{Object-Oriented Programming}
+\cvitem{2013}{Introduction to Programming}
+
+\section{Research Projects}
+\cvitem{2023}{\emph{A Study of a Concept for Automatic Dubbing of Documentaries}, Funded by Doli Media Studio Ltd.}
+\cvitem{2023}{\emph{Consultations for the Development of a Neural Network for Recognising Advertisements in Video Streams}, Funded by H-Tech Ltd.}
+\cvitem{2021--2023}{\emph{Scientific Consultation on the Subject ``Development and Maintenance of a Platform as an Online Web-Based System for Language Resources Oriented Towards the Use of Literary Bulgarian as the Official Language'' (BERON)}, Funded by the Ministry of Education and Science of Bulgaria}
+\cvitem{2021--2022}{\emph{Development of a Bulgarian Speech Synthesiser for the Needs of People with Visual Impairments}, Funded by the Union of the Blind in Bulgaria}
+\cvitem{2018--2022}{\emph{National Scientific Program ``Electronic Health in Bulgaria'' (NSP eHealth), Work Package 5: ``Development of a Prototype for Computer-Aided Preparation of Medical Documentation (Voice Recorder for Bulgarian Language)''}, Funded by the Ministry of Education and Science of Bulgaria}
+
+\section{Publications}
+\begin{cvenumerate}
+	\item Georgi Shopov and Stefan Gerdjikov. \newline \href{https://aclanthology.org/2024.emnlp-main.328/}{Consistent Bidirectional Language Modelling: Expressive Power and Representational Conciseness}. \newline In \emph{Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing}, 2024.
+	\item Diana Geneva, Georgi Shopov and Stoyan Mihov. \newline \href{https://www.worldscientific.com/doi/10.1142/S012905412243002X}{Algorithms for Probabilistic and Stochastic Subsequential Failure Transducers}. \newline In \emph{International Journal of Foundations of Computer Science, 34}(8), 2023.
+	\item Diana Geneva, Georgi Shopov, Kostadin Garov, Maria Todorova, Stefan Gerdjikov and Stoyan Mihov. \newline \href{https://www.isca-archive.org/interspeech_2023/geneva23_interspeech.html}{Accentor: An Explicit Lexical Stress Model for TTS Systems}. \newline In \emph{Proceedings of the 24th Annual Conference of the International Speech Communication Association}, 2023.
+	\item Georgi Shopov, Stefan Gerdjikov and Stoyan Mihov. \newline \href{https://ieeexplore.ieee.org/document/10096566}{StreamSpeech: Low-Latency Neural Architecture for High-Quality On-Device Speech Synthesis}. \newline In \emph{Proceedings of the 2023 IEEE International Conference on Acoustics, Speech and Signal Processing}, 2023.
+	\item Diana Geneva, Georgi Shopov and Stoyan Mihov. \newline \href{https://link.springer.com/chapter/10.1007/978-3-030-79121-6_11}{Algorithms for Probabilistic and Stochastic Subsequential Failure Transducers}. \newline In \emph{Proceedings of the 25th International Conference on Implementation and Application of Automata}, 2021.
+	\item Diana Geneva, Georgi Shopov and Stoyan Mihov. \newline \href{https://arxiv.org/abs/2003.09364}{Composition and Weight Pushing of Monotonic Subsequential Failure Transducers Representing Probabilistic Models}. \newline In \emph{arXiv:2003.09364 [cs.FL]}, 2020.
+	\item Diana Geneva, Georgi Shopov and Stoyan Mihov. \newline \href{https://link.springer.com/chapter/10.1007/978-3-030-31372-2_16}{Building an ASR Corpus Based on Bulgarian Parliament Speeches}. \newline In \emph{Proceedings of the 7th International Conference on Statistical Language and Speech Processing}, 2019.
+	\item Diana Geneva and Georgi Shopov. \newline \href{https://aclanthology.org/R19-2007}{Towards Accurate Text Verbalization for ASR Based on Audio Alignment}. \newline In \emph{Proceedings of the 6th Student Research Workshop Associated with the 12th International Conference on Recent Advances in Natural Language Processing}, 2019.
+\end{cvenumerate}
+
+\end{document}
