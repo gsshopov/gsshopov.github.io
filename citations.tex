@@ -1,8 +1,5 @@
 \documentclass[a4paper,12pt]{article}
 
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english,bulgarian]{babel}
 \usepackage[margin=1in]{geometry}
 \usepackage[colorlinks,allcolors={blue!50!black}]{hyperref}
 \usepackage{microtype}
@@ -16,7 +13,7 @@
 \newlist{citenumerate}{enumerate}{1}
 \setlist[citenumerate]{label=\arabic*.,labelsep=\mylabelsep}
 
-\usepackage[language=english,autolang=other,maxnames=100,url=false]{biblatex}
+\usepackage[maxnames=100,url=false]{biblatex}
 \addbibresource{publications.bib}
 \addbibresource{citations.bib}
 
@@ -72,40 +69,35 @@
 }
 \makeatother
 
-\title{\textbf{Списък на цитиранията}}
+\title{\textbf{List of citations}}
 \date{}
-\author{
-	Георги Шопов \\
-	\textit{ИИКТ -- Българска академия на науките} \\
-	\textit{секция ,,Изкуствен интелект и езикови технологии``}
-}
 
 \begin{document}
 	\maketitle
 	\begin{pubenumerate}
 %		\item \fullcite{shopov-gerdjikov-2024-consistent}
 %			\par
-%			\emph{Цитирания:}
+%			\emph{Citations:}
 %			\begin{citenumerate}
 %			\end{citenumerate}
 
 		\addtocounter{pubenumeratei}{1}
 %		\item \fullcite{geneva-etal-2023-algorithms}
 %			\par
-%			\emph{Цитирания:}
+%			\emph{Citations:}
 %			\begin{citenumerate}
 %			\end{citenumerate}
 
 		\addtocounter{pubenumeratei}{1}
 %		\item \fullcite{geneva-etal-2023-accentor}
 %			\par
-%			\emph{Цитирания:}
+%			\emph{Citations:}
 %			\begin{citenumerate}
 %			\end{citenumerate}
 			
 		\item \fullcite{shopov-etal-2023-streamspeech}
 			\par
-			\emph{Цитирания:}
+			\emph{Citations:}
 			\begin{citenumerate}
 				\item \fullcite{reus-etal-2024-tungnaa}
 			\end{citenumerate}
@@ -113,20 +105,20 @@
 		\addtocounter{pubenumeratei}{1}
 %		\item \fullcite{geneva-etal-2021-algorithms}
 %			\par
-%			\emph{Цитирания:}
+%			\emph{Citations:}
 %			\begin{citenumerate}
 %			\end{citenumerate}
 
 		\addtocounter{pubenumeratei}{1}
 %		\item \fullcite{geneva-etal-2020-composition}
 %			\par
-%			\emph{Цитирания:}
+%			\emph{Citations:}
 %			\begin{citenumerate}
 %			\end{citenumerate}
 			
 		\item \fullcite{geneva-etal-2019-building}
 			\par
-			\emph{Цитирания:}
+			\emph{Citations:}
 			\begin{citenumerate}
 				\item \fullcite{margova-bruinsma-2024-look}
 				\item \fullcite{varona-etal-2024-bilingual}
@@ -140,7 +132,7 @@
 		\addtocounter{pubenumeratei}{1}
 %		\item \fullcite{geneva-shopov-2019-towards}
 %			\par
-%			\emph{Цитирания:}
+%			\emph{Citations:}
 %			\begin{citenumerate}
 %			\end{citenumerate}
 	\end{pubenumerate}
