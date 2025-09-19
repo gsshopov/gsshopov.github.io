@@ -1,0 +1,57 @@
+\usepackage[maxnames=100, sorting=none]{biblatex}
+\usepackage[colorlinks, allcolors={blue!50!black}]{hyperref}
+\usepackage{xcolor}
+
+% Make the title of article, inproceedings, misc and thesis entries a link
+\newbibmacro{string+urldoi}[1]{%
+  \iffieldundef{url}{%
+    \iffieldundef{doi}{%
+        #1%
+    }{%
+      \href{http://dx.doi.org/\thefield{doi}}{#1}%
+    }%
+  }{%
+    \href{\thefield{url}}{#1}%
+  }%
+}
+\DeclareFieldFormat[article, inproceedings, misc, thesis]{title}{%
+  \usebibmacro{string+urldoi}{\mkbibquote{#1}}%
+}
+
+% Print the publisher field of article entries
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}{}{%
+    \newunit%
+    \printfield{series}%
+    \setunit{\addspace}%
+  }%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue}%
+  \setunit{\addperiod\space}%
+  \usebibmacro{publisher+location+date}%
+  \newunit%
+}
+
+% Print both the issn and isbn fields
+\usepackage{xpatch}
+\makeatletter
+\@for\next:=book,inbook,collection,incollection,proceedings,inproceedings\do{%
+  \xpatchbibdriver{\next}
+    {\printfield{isbn}}
+    {\printfield{issn}\newunit\newblock\printfield{isbn}}
+    {}{}
+}
+\makeatother
+
+% Add period at the end of a \fullcite
+\DeclareCiteCommand{\fullcite}
+  {\usebibmacro{prenote}}
+  {\usedriver
+    {\DeclareNameAlias{sortname}{default}}
+    {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}%
+   \finentry}

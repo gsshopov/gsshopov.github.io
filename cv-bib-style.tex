@@ -1,0 +1,63 @@
+\usepackage[maxnames=100, sorting=none]{biblatex}
+
+% Make the title of article, inproceedings and misc entries a link
+\newbibmacro{string+urldoi}[1]{%
+  \iffieldundef{url}{%
+    \iffieldundef{doi}{%
+        #1%
+    }{%
+      \href{http://dx.doi.org/\thefield{doi}}{#1}%
+    }%
+  }{%
+    \href{\thefield{url}}{#1}%
+  }%
+}
+\DeclareFieldFormat[article, inproceedings, misc]{title}{%
+  \usebibmacro{string+urldoi}{#1}%
+}
+
+% Change arXiv formatting
+\DeclareFieldFormat{eprint}{%
+  \printfield{eprinttype}: #1 [\printfield{eprintclass}]%
+}
+
+
+% Simple driver for inproceedings
+\DeclareBibliographyDriver{inproceedings}{%
+  \printnames{author}. \\
+  \printfield{title}. \\
+  In \printfield{booktitle}, \printfield{year}.%
+}
+
+% Simple driver for article
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}. \\
+  \printfield{title}. \\
+  In \printfield{journaltitle}, \printfield{year}.%
+}
+
+% Simple driver for misc (e.g., arXiv preprints)
+\DeclareBibliographyDriver{misc}{%
+  \printnames{author}. \\
+  \printfield{title}. \\
+  In \printfield{eprint}, \printfield{year}.
+}
+
+% Make left margin and label separator consistent with moderncv
+\defbibenvironment{bibliography}{%
+  \list{%
+    \printtext[labelnumberwidth]{%
+      \printfield{prefixnumber}%
+      \printfield{labelnumber}%
+    }%
+  }{%
+    \setlength{\labelwidth}{\labelnumberwidth}%
+    \setlength{\leftmargin}{\hintscolumnwidth}%
+    \setlength{\labelsep}{\separatorcolumnwidth}%
+    \addtolength{\leftmargin}{\labelsep}%
+    \setlength{\itemsep}{\bibitemsep}%
+    \setlength{\parsep}{\bibparsep}%
+  }%
+  \renewcommand*{\makelabel}[1]{\hss##1}%
+}{\endlist}{\item}
+
