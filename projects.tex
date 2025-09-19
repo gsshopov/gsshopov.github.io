@@ -1,30 +1,150 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper, 12pt]{article}
 
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english,bulgarian]{babel}
+\input{common}
+
 \usepackage{calc}
-\usepackage{enumitem} 
-\usepackage[margin=1in]{geometry}
-\usepackage{microtype}
+\usepackage{enumitem}
 
-\title{\textbf{List of projects}}
+\NewDocumentCommand{\proj}{m m m m m m m m}{
+  \item[#1] \emph{\trans{#2}{#3}}
+    \begin{itemize}
+      \item \trans{Договор}{Contract}: \trans{\textnumero}{No.} #4
+      \item \trans{Финансиращ орган}{Funding organisation}: \trans{#5}{#6}
+      \item \trans{Ръководител}{Project manager}: \trans{#7}{#8}
+    \end{itemize}
+}
+
+\title{%
+  \trans{%
+    Списък на проектите%
+  }{%
+    List of Projects%
+  }%
+}
+
 \date{}
 \author{}
 
 \begin{document}
-	\maketitle
-	\section*{IICT, Bulgarian Academy of Sciences}
-	\begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{2021--2023}},align=right]
-		%\item[\textbf{2023 г.}] \emph{Изследване на концепция за автоматично озвучаване на документални филми}, Договор: \textnumero\,210351, Финансиращ орган: Доли Медия Студио ЕООД, Ръководител: проф. д.н. Стоян Михов
-		\item[\textbf{2023}] \emph{Study of a Concept for Automatic Dubbing of Documentaries}, Contract: No. 210351, Funding organisation: Doli Media Studio Ltd., Project leader: Prof. D.Sc. Stoyan Mihov
-		%\item[\textbf{2023 г.}] \emph{Консултации за разработване на невронна мрежа за разпознаване на реклами във видео поток}, Договор: \textnumero\,210350, Финансиращ орган: Ейч-Тек ЕООД, Ръководител: проф. д.н. Стоян Михов
-		\item[\textbf{2023}] \emph{Consultancy for the Development of a Neural Network for Recognising Advertisements in Video Streams}, Contract: No. 210350, Funding organisation: H-Tech Ltd., Project leader: Prof. D.Sc. Stoyan Mihov
-		%\item[\textbf{2021--2023 г.}] \emph{Научна консултация с предмет ,,Разработване и поддържане на платформа като онлайн уеб-базирана система за езикови ресурси ориентирани към използването на българския книжовен език като официален`` (БЕРОН)}, Договор: \textnumero\,Д01-300/17.12.2021, Финансиращ орган: Министерство на образованието и науката на България, Ръководител: проф. д-р Кирил Симов
-		\item[\textbf{2021--2023}] \emph{Scientific Consultation on the Subject ``Development and Maintenance of a Platform as an Online Web-Based System for Language Resources Designed for the Use of Literary Bulgarian as the Official Language'' (BERON)}, Contract: No. Д01-300/17.12.2021, Funding organisation: Ministry of Education and Science of Bulgaria, Project leader: Prof. д-р Kiril Simov
-		%\item[\textbf{2021--2022 г.}] \emph{Разработване на синтезатор на българска реч за нуждите на хората със зрителни увреждания}, Договор: \textnumero\,210345, Финансиращ орган: Съюз на слепите в България, Ръководител: проф. д.н. Стоян Михов
-		\item[\textbf{2021--2022}] \emph{Development of a Bulgarian Speech Synthesiser for the Needs of People with Visual Impairments}, Contract: No. 210345, Funding organisation: Union of the Blind in Bulgaria, Project leader: Prof. D.Sc. Stoyan Mihov
-		%\item[\textbf{2018--2022 г.}] \emph{Национална научна програма ,,Електронно здравеопазване в България`` (ННП еЗдраве), Работен пакет 5: ,,Създаване на прототип за компютърно подпомагане на изготвянето на медицинска документация (диктофон за български език)``}, Договор: \textnumero\,Д01-200/16.11.2018, Финансиращ орган: Министерство на образованието и науката на България, Ръководител: проф. д.м.н. Галя Ангелова
-		\item[\textbf{2018--2022}] \emph{National Research Program ``Electronic Health in Bulgaria'' (NSP eHealth), Work Package 5: ``Development of a Prototype for Computer-Aided Preparation of Medical Documentation (Voice Recorder for the Bulgarian Language)''}, Contract: No. Д01-200/16.11.2018, Funding organisation: Ministry of Education and Science of Bulgaria, Project leader: Prof. D.Sc. Galia Angelova
-	\end{description}
+  \maketitle
+
+  \section*{%
+    \trans{%
+      ИИКТ, Българска академия на науките%
+    }{%
+      IICT, Bulgarian Academy of Sciences%
+    }%
+  }
+
+  \begin{description}[
+    leftmargin=!,
+    labelwidth=\widthof{2021--2023},
+    align=right
+  ]
+    \proj{%
+      2023%
+    }{%
+      Изследване на концепция за автоматично озвучаване на документални
+      филми%
+    }{%
+      Study of a Concept for Automatic Dubbing of Documentaries%
+    }{%
+      210351%
+    }{%
+      Доли Медия Студио ЕООД%
+    }{%
+      Doli Media Studio Ltd.%
+    }{%
+      проф. д.н. Стоян Михов%
+    }{%
+      Prof. D.Sc. Stoyan Mihov%
+    }
+
+    \proj{%
+      2023%
+    }{%
+      Консултации за разработване на невронна мрежа за разпознаване на
+      реклами във видео поток%
+    }{%
+      Consultancy for the Development of a Neural Network for Recognising
+      Advertisements in Video Streams%
+    }{%
+      210350%
+    }{%
+      Ейч-Тек ЕООД%
+    }{%
+      H-Tech Ltd.%
+    }{%
+      проф. д.н. Стоян Михов%
+    }{%
+      Prof. D.Sc. Stoyan Mihov%
+    }
+
+    \proj{%
+      2021--2023%
+    }{%
+      Научна консултация с предмет \enquote{Разработване и поддържане на
+      платформа като онлайн уеб-базирана система за езикови ресурси ориентирани
+      към използването на българския книжовен език като официален} (БЕРОН)%
+    }{%
+      Scientific Consultation on the Subject \enquote{Development and
+      Maintenance of a Platform as an Online Web-Based System for Language
+      Resources Designed for the Use of Literary Bulgarian as the Official
+      Language} (BERON)%
+    }{%
+      Д01-300/17.12.2021%
+    }{%
+      Министерство на образованието и науката на България
+    }{%
+      Ministry of Education and Science of Bulgaria
+    }{%
+      проф. д-р Кирил Симов
+    }{%
+      Prof. Kiril Simov
+    }
+
+    \proj{%
+      2021--2022%
+    }{%
+      Разработване на синтезатор на българска реч за нуждите на хората със
+      зрителни увреждания%
+    }{%
+      Development of a Bulgarian Speech Synthesiser for the Needs of People
+      with Visual Impairments%
+    }{%
+      210345%
+    }{%
+      Съюз на слепите в България%
+    }{%
+      Union of the Blind in Bulgaria%
+    }{%
+      проф. д.н. Стоян Михов%
+    }{%
+      Prof. D.Sc. Stoyan Mihov%
+    }
+
+    \proj{%
+      2018--2022%
+    }{%
+      Национална научна програма \enquote{Електронно здравеопазване в България}
+      (ННП еЗдраве), Работен пакет 5: \enquote{Създаване на прототип за
+      компютърно подпомагане на изготвянето на медицинска документация
+      (диктофон за български език)}%
+    }{%
+      National Research Program \enquote{Electronic Health in Bulgaria} (NRP
+      eHealth), Work Package 5: \enquote{Development of a Prototype for
+      Computer-Aided Preparation of Medical Documentation (Voice Recorder for
+      the Bulgarian Language)}%
+    }{%
+      Д01-200/16.11.2018%
+    }{%
+      Министерство на образованието и науката на България%
+    }{%
+      Ministry of Education and Science of Bulgaria%
+    }{%
+      проф. д.м.н. Галя Ангелова%
+    }{%
+      Prof. D.Sc. Galia Angelova%
+    }
+  \end{description}
 \end{document}

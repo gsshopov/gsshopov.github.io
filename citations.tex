@@ -1,143 +1,80 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper, 12pt]{article}
 
-\usepackage[margin=1in]{geometry}
-\usepackage[colorlinks,allcolors={blue!50!black}]{hyperref}
-\usepackage{microtype}
-\usepackage{xcolor}
+\input{common}
+\input{bib-style}
+\addbibresource{publications.bib}
+\addbibresource{citations.bib}
 
 \usepackage{enumitem}
 \newlength\mylabelsep
 \setlength\mylabelsep{\labelsep}
 \newlist{pubenumerate}{enumerate}{1}
-\setlist[pubenumerate]{label=[\arabic*],leftmargin=24.2pt,labelsep=*}
+\setlist[pubenumerate]{label=[\arabic*], leftmargin=24.2pt, labelsep=*}
 \newlist{citenumerate}{enumerate}{1}
-\setlist[citenumerate]{label=\arabic*.,labelsep=\mylabelsep}
+\setlist[citenumerate]{label=\arabic*., labelsep=\mylabelsep}
 
-\usepackage[maxnames=100,url=false]{biblatex}
-\addbibresource{publications.bib}
-\addbibresource{citations.bib}
-
-% Make the title of article, inproceedings and misc entries a link
-\newbibmacro{string+urldoi}[1]{%
- 	\iffieldundef{url}{%
-		\iffieldundef{doi}{%
-			#1%
-		}{%
-			\href{http://dx.doi.org/\thefield{doi}}{#1}%
-		}%
- 	}{%
-		\href{\thefield{url}}{#1}%
-	}%
+\NewDocumentCommand{\citeitem}{m}{
+  \item \fullcite{#1}
 }
-\DeclareFieldFormat[article,inproceedings,misc,thesis]{title}%
-	{\usebibmacro{string+urldoi}{\mkbibquote{#1}}}
 
-% Print the publisher field of article entries
-\renewbibmacro*{journal+issuetitle}{%
-	\usebibmacro{journal}%
-	\setunit*{\addspace}%
-	\iffieldundef{series}
-		{}
-		{\newunit
-		 \printfield{series}%
-		 \setunit{\addspace}}%
-	\usebibmacro{volume+number+eid}%
-	\setunit{\addspace}%
-	\usebibmacro{issue}%
-	\setunit{\addperiod\space}%
-	\usebibmacro{publisher+location+date}%
-	\newunit}
-	
-% Add period at the end of a \fullcite
-\DeclareCiteCommand{\fullcite}
-	{\usebibmacro{prenote}}
-	{\usedriver
-		{\DeclareNameAlias{sortname}{default}}
-		{\thefield{entrytype}}}
-	{\multicitedelim}
-	{\usebibmacro{postnote}%
-	 \finentry}
-
-\usepackage{xpatch}
-% Print both the issn and isbn fields
-\makeatletter
-\@for\next:=book,inbook,collection,incollection,proceedings,inproceedings\do{%
-	\xpatchbibdriver{\next}
-		{{\printfield{isbn}}}
-		{{\printfield{issn}\newunit\newblock\printfield{isbn}}}
-		{}{}%
+\NewDocumentCommand{\pubcitelist}{m >{\SplitList{,}}o}{
+  \IfNoValueTF{#2}{
+    \addtocounter{pubenumeratei}{1}
+  }{
+    \item \fullcite{#1}
+      \par
+      \emph{Citations:}
+      \begin{citenumerate}
+        \ProcessList{#2}{\citeitem}
+      \end{citenumerate}
+  }
 }
-\makeatother
 
-\title{\textbf{List of citations}}
+\title{%
+  \trans{%
+    Списък на цитиранията%
+  }{%
+    List of Citations%
+  }
+}
+
 \date{}
 \author{}
 
 \begin{document}
-	\maketitle
-	\begin{pubenumerate}
-%		\item \fullcite{shopov-gerdjikov-2024-consistent}
-%			\par
-%			\emph{Citations:}
-%			\begin{citenumerate}
-%			\end{citenumerate}
+  \maketitle
 
-		\addtocounter{pubenumeratei}{1}
-%		\item \fullcite{geneva-etal-2023-algorithms}
-%			\par
-%			\emph{Citations:}
-%			\begin{citenumerate}
-%			\end{citenumerate}
+  \selectlanguage{british}
+  \begin{pubenumerate}
+    \pubcitelist{shopov-gerdjikov-2024-consistent}
 
-		\addtocounter{pubenumeratei}{1}
-		\item \fullcite{geneva-etal-2023-accentor}
-			\par
-			\emph{Citations:}
-			\begin{citenumerate}
-				\item \fullcite{senyk-2025-implementing}
-			\end{citenumerate}
-			
-		\item \fullcite{shopov-etal-2023-streamspeech}
-			\par
-			\emph{Citations:}
-			\begin{citenumerate}
-				\item \fullcite{gerazov-etal-2025-review}
-				\item \fullcite{bai-etal-2025-speakstream}
-				\item \fullcite{reus-etal-2024-tungnaa}
-			\end{citenumerate}
-			
-		\addtocounter{pubenumeratei}{1}
-%		\item \fullcite{geneva-etal-2021-algorithms}
-%			\par
-%			\emph{Citations:}
-%			\begin{citenumerate}
-%			\end{citenumerate}
+    \pubcitelist{geneva-etal-2023-algorithms}
 
-		\addtocounter{pubenumeratei}{1}
-%		\item \fullcite{geneva-etal-2020-composition}
-%			\par
-%			\emph{Citations:}
-%			\begin{citenumerate}
-%			\end{citenumerate}
-			
-		\item \fullcite{geneva-etal-2019-building}
-			\par
-			\emph{Citations:}
-			\begin{citenumerate}
-				\item \fullcite{margova-bruinsma-2024-look}
-				\item \fullcite{varona-etal-2024-bilingual}
-				\item \fullcite{virkkunen-etal-2023-finnish}
-				\item \fullcite{rouvalis-2023-grec}
-				\item \fullcite{dimitrova-2021-bulgarian}
-				\item \fullcite{kirkedal-etal-2020-ft}
-				\item \fullcite{kratochvil-etal-2020-large}
-			\end{citenumerate}
-			
-		\addtocounter{pubenumeratei}{1}
-%		\item \fullcite{geneva-shopov-2019-towards}
-%			\par
-%			\emph{Citations:}
-%			\begin{citenumerate}
-%			\end{citenumerate}
-	\end{pubenumerate}
+    \pubcitelist{geneva-etal-2023-accentor}[
+      senyk-2025-implementing
+    ]
+    \fullcite{senyk-2025-implementing}
+
+    \pubcitelist{shopov-etal-2023-streamspeech}[
+      gerazov-etal-2025-review,
+      bai-etal-2025-speakstream,
+      reus-etal-2024-tungnaa
+    ]
+
+    \pubcitelist{geneva-etal-2021-algorithms}
+
+    \pubcitelist{geneva-etal-2020-composition}
+
+    \pubcitelist{geneva-etal-2019-building}[
+      margova-bruinsma-2024-look,
+      varona-etal-2024-bilingual,
+      virkkunen-etal-2023-finnish,
+      rouvalis-2023-grec,
+      dimitrova-2021-bulgarian,
+      kirkedal-etal-2020-ft,
+      kratochvil-etal-2020-large
+    ]
+
+    \pubcitelist{geneva-shopov-2019-towards}
+  \end{pubenumerate}
 \end{document}
