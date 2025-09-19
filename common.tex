@@ -1,23 +1,21 @@
-\usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
-\usepackage[bulgarian, british]{babel}
-\usepackage[autostyle]{csquotes}
+\usepackage{fontspec}
+\setsansfont{CMU Sans Serif}
 
+\usepackage[bulgarian, british]{babel}
+
+\usepackage[autostyle]{csquotes}
 \DeclareQuoteStyle{bulgarian}
   {\quotedblbase}
   {\textquotedblleft}
   [0.05em]
   {\quotesinglbase}
   {\textquoteleft}
-
 \DeclareQuoteAlias{english}{british}
 
 \DeclareRobustCommand{\trans}[2]{%
-  \ifnum \pdfstrcmp{\languagename}{bulgarian} = 0%
-    #1%
-  \else%
-    #2%
-  \fi%
+  \iflanguage{bulgarian}%
+    {#1}%
+    {#2}%
 }
 
 \usepackage[margin=0.95in]{geometry}
