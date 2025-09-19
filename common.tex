@@ -1,0 +1,24 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian, british]{babel}
+\usepackage[autostyle]{csquotes}
+
+\DeclareQuoteStyle{bulgarian}
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.05em]
+  {\quotesinglbase}
+  {\textquoteleft}
+
+\DeclareQuoteAlias{english}{british}
+
+\DeclareRobustCommand{\trans}[2]{%
+  \ifnum \pdfstrcmp{\languagename}{bulgarian} = 0%
+    #1%
+  \else%
+    #2%
+  \fi%
+}
+
+\usepackage[margin=0.95in]{geometry}
+\usepackage{microtype}
